@@ -1,1 +1,2 @@
 # currencyConverter
+My test programm
