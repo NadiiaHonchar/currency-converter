@@ -1,64 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-// import { useState, useEffect } from "react";
-import Header from './Components/Header';
-import SearchForm from './Components/SearchForm';
-
+import logo from "./logo.svg";
+import "./App.css";
+import { useState, useEffect } from "react";
+import Header from "./Components/Header";
+import SearchForm from "./Components/SearchForm";
+import axios from "axios";
 
 function App() {
-// const [currency, setCurrency] = useState([]);
+  // const API_KEY = "81ed5d216ebe4d362cf78679df36331bacbc9e5c";
 
-// useEffect(() => {
-//   window.localStorage.setItem("data", JSON.stringify(data));
-// }, [data]);
+  const [count1, setCount1] = useState(1);
+  const [count2, setCount2] = useState(1);
+  const [currency1, setCurrency1] = useState("UHA");
+  const [currency2, setCurrency2] = useState("UHA");
+  const [price, setPrice] = useState([]);
 
-// const Reculculation = (data)=>{
-  // setCurrency(data);
-  // console.log(currency);
-  // const {exchange, selectExchange, receipt, selectReceipt} =data;  
-
-  //   switch (data) {
-  //     case "exchange":
-  //       setExchange(value);
-  //       break;
-  //     case "selectExchange":
-  //       setSelectExchange(value);
-  //       break;
-  //     case "receipt":
-  //       setReceipt(value);
-  //       break;
-  //     case "selectReceipt":
-  //       setSelelectReceipt(value);
-  //       break;
-  //     default:
-  //       return;
-  //   }
-//     return setCurrency(data);
-// }
-
-
+  useEffect(() => {
+    // axios.get("https://api.minfin.com.ua/mb/81ed5d216ebe4d362cf78679df36331bacbc9e5c/")
+    axios.get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json")
+      .then((responce) => {setPrice(responce.data);
+      });
+  }, []);
 
   return (
     <>
-    <Header/>
-    <SearchForm/>
+      <Header />
+      <SearchForm currencies={price} count={count1} currency={currency1} />
+      {/* <SearchForm currencies={["UHA"]} count={count2} currency={currency2} /> */}
     </>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
   );
 }
 
