@@ -13,6 +13,7 @@ function App() {
   const [currency1, setCurrency1] = useState("UHA");
   const [currency2, setCurrency2] = useState("UHA");
   const [price, setPrice] = useState([]);
+  // const [stats, setStates] = useState([]);
 
   useEffect(() => {
     // axios.get("https://api.minfin.com.ua/mb/81ed5d216ebe4d362cf78679df36331bacbc9e5c/")
@@ -21,11 +22,14 @@ function App() {
       });
   }, []);
 
+  const newStates =price.map(({cc})=> cc);
+
+
   return (
     <>
       <Header />
-      <SearchForm currencies={price} count={count1} currency={currency1} />
-      {/* <SearchForm currencies={["UHA"]} count={count2} currency={currency2} /> */}
+      <SearchForm currencies={newStates} count={count1} currency={currency1} />
+      <SearchForm currencies={newStates} count={count2} currency={currency2} />
     </>
   );
 }

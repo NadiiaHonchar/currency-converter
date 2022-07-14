@@ -2,15 +2,21 @@ import { useState, useEffect } from "react";
 import style from "./SearchForm.module.css";
 
 export default function SearchForm({count, currency, currencies}) {
+
+  // const newStates =currencies.map(({cc, rate})=> ({
+  //     [cc]:rate,
+  //   }))
+  //   console.log(newStates);
+
   return (
     <>
       <div className="formInput">
         <input type="text" value={count} />
         <select value={currency}>
-          {console.log(Object.values(currencies))}
-          {/* {Object.value(currencies).map(({cc}) => (
-            <option value={cc}>{cc}</option>
-          ))} */}
+          {/* {console.log(Object.values(currencies))} */}
+          {currencies.map((item) => (
+            <option value={item}>{item}</option>
+          ))}
         </select>
       </div>
       {/* <form className={style.form}>
