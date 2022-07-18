@@ -1,12 +1,12 @@
 import style from "./Header.module.css";
-const Header = () => {
+const Header = ({rateUSD, rateEUR}) => {
   return (
     <>
       <header className={style.header}>
         <div className={style.containerHeader}>
-          <div>Currency Converter</div>
-          <div className={style.marginElement}>USD=UAH</div>
-          <div className={style.marginElement}>EUR=UAH</div>
+          <div>Конвертер валют</div>
+          <div className={style.marginElement}>UAH = {rateUSD} USD</div>
+          <div className={style.marginElement}>UAH = {rateEUR} EUR</div>
         </div>
       </header>
     </>

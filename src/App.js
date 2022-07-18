@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
 import Header from "./Components/Header";
@@ -42,7 +42,7 @@ function App() {
     return number.toFixed(4);
   }
 
-  function receiveRate(currency) {
+  function getRate(currency) {
     let rates = 0;
     price.map((item) => {
       if (item.cc === currency) {
@@ -53,36 +53,36 @@ function App() {
   }
 
   function handleCount1Change(count1) {
-    let rates1 = receiveRate(currency1);
-    let rates2 = receiveRate(currency2);
-    setCount2(format((count1 * rates2) / rates1));
+    setCount2(
+      format((count1 * getRate(currency2)) / getRate(currency1))
+    );
     setCount1(count1);
   }
 
   function handleCurrency1Change(currency1) {
-    let rates1 = receiveRate(currency1);
-    let rates2 = receiveRate(currency2);
-    setCount2(format((count1 * rates2) / rates1));
+    setCount2(
+      format((count1 * getRate(currency2)) / getRate(currency1))
+    );
     setCurrency1(currency1);
   }
 
   function handleCount2Change(count2) {
-    let rates1 = receiveRate(currency1);
-    let rates2 = receiveRate(currency2);
-    setCount1(format((count2 * rates1) / rates2));
+    setCount1(
+      format((count2 * getRate(currency1)) / getRate(currency2))
+    );
     setCount2(count2);
   }
 
   function handleCurrency2Change(currency2) {
-    let rates1 = receiveRate(currency1);
-    let rates2 = receiveRate(currency2);
-    setCount1(format((count2 * rates1) / rates2));
+    setCount1(
+      format((count2 * getRate(currency1)) / getRate(currency2))
+    );
     setCurrency2(currency2);
   }
 
   return (
     <>
-      <Header />
+      <Header rateUSD={getRate("USD")} rateEUR={getRate("EUR")}/>
       <SearchForm
         currencies={price.map(({ cc }) => cc)}
         count={count1}
