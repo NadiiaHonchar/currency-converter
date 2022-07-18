@@ -2,13 +2,14 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Header from "./Components/Header";
+import MainPage from "./Components/MainPage";
 import SearchForm from "./Components/SearchForm";
 import axios from "axios";
 
 function App() {
   const [count1, setCount1] = useState(1);
   const [count2, setCount2] = useState(1);
-  const [currency1, setCurrency1] = useState("UAH");
+  const [currency1, setCurrency1] = useState("USD");
   const [currency2, setCurrency2] = useState("UAH");
   const [price, setPrice] = useState([]);
 
@@ -34,7 +35,7 @@ function App() {
 
   useEffect(() => {
     if (!!price) {
-      handleCount1Change(1);
+      handleCount1Change(100);
     }
   }, [price]);
 
@@ -52,37 +53,49 @@ function App() {
     return rates;
   }
 
+  function getDay(){
+    let day=0;
+    price.map((item) => {
+      if (item.cc === 'USD') {        
+        day = item.exchangedate;
+      }
+    });
+    return day;
+  }
+
   function handleCount1Change(count1) {
     setCount2(
-      format((count1 * getRate(currency2)) / getRate(currency1))
+      format((count1 * getRate(currency1)) / getRate(currency2))
     );
     setCount1(count1);
   }
 
   function handleCurrency1Change(currency1) {
     setCount2(
-      format((count1 * getRate(currency2)) / getRate(currency1))
+      format((count1 * getRate(currency1)) / getRate(currency2))
     );
     setCurrency1(currency1);
   }
 
   function handleCount2Change(count2) {
     setCount1(
-      format((count2 * getRate(currency1)) / getRate(currency2))
+      format((count2 * getRate(currency2)) / getRate(currency1))
     );
     setCount2(count2);
   }
 
   function handleCurrency2Change(currency2) {
     setCount1(
-      format((count2 * getRate(currency1)) / getRate(currency2))
+      format((count2 * getRate(currency2)) / getRate(currency1))
     );
     setCurrency2(currency2);
   }
 
+
   return (
     <>
       <Header rateUSD={getRate("USD")} rateEUR={getRate("EUR")}/>
+      <MainPage data = {getDay()}>
       <SearchForm
         currencies={price.map(({ cc }) => cc)}
         count={count1}
@@ -97,6 +110,7 @@ function App() {
         onCountChange={handleCount2Change}
         onCurrencyChange={handleCurrency2Change}
       />
+      </MainPage>
     </>
   );
 }
