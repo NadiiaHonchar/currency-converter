@@ -1,3 +1,17 @@
-.form{
-    padding: 10px;
+
+@media (min-width: 480px) {
+    .formInput {
+      /* width: 480px; */
+    }
+  }
+  @media (min-width: 768px) {
+    .formInput {
+      /* width: 768px; */
+      display: flex;
+  }
 }
+  @media (min-width: 1200px) {
+    .formInput {
+      /* width: 1200px; */
+    }
+  }

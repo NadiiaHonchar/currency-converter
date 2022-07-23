@@ -4,9 +4,9 @@ export default function MainPage({data,
   children
 }) {
   return (
-    <>
-    <h2>Курс національного банку україни станом на {data}</h2>
-    {children}      
-    </>
+    <div className={style.container}>
+    <h2>Курс національного банку України станом на {data}</h2>
+    {children}
+    </div>
   );
 }

@@ -4,12 +4,14 @@ export default function SearchForm({
   count,
   currency,
   currencies,
+  txt,
   onCountChange,
   onCurrencyChange,
 }) {
   return (
     <>
-      <div className="formInput">
+      <div className={style.formInput}>
+        <p>{txt}</p>
         <input
           type="text"
           value={count}

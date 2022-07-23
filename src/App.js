@@ -53,6 +53,16 @@ function App() {
     return rates;
   }
 
+  function getTxt(currency) {
+    let txt = '';
+    price.map((item) => {
+      if (item.cc === currency) {
+        txt = item.txt;
+      }
+    });
+    return txt;
+  }
+
   function getDay(){
     let day=0;
     price.map((item) => {
@@ -100,6 +110,7 @@ function App() {
         currencies={price.map(({ cc }) => cc)}
         count={count1}
         currency={currency1}
+        txt={getTxt(currency1)}
         onCountChange={handleCount1Change}
         onCurrencyChange={handleCurrency1Change}
       />
@@ -107,6 +118,7 @@ function App() {
         currencies={price.map(({ cc }) => cc)}
         count={count2}
         currency={currency2}
+        txt={getTxt(currency2)}
         onCountChange={handleCount2Change}
         onCurrencyChange={handleCurrency2Change}
       />
