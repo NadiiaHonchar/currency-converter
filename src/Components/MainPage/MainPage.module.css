@@ -1,29 +1,43 @@
 .container {
-  /* display: flex; */
   padding: 10px;
   margin-left: auto;
   margin-right: auto;
   align-items: center;
-  /* color: yellow; */
   font-size: 16px;
   font-weight: 700;
   justify-content: right;
-  /* background-color: blue; */
+}
+
+.cardForm {
+  border: 2px solid blue;
+  border-radius: 20px;
+  max-width: 450px;
+  padding: 10px;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
 }
 
 @media (min-width: 480px) {
-    .container {
-      width: 480px;
-    }
+  .container {
+    width: 480px;
   }
-  @media (min-width: 768px) {
-    .container {
-      width: 768px;
-      /* display: flex; */
-    }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 768px;
   }
-  @media (min-width: 1200px) {
-    .container {
-      width: 1200px;
-    }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1200px;
   }
+}
+
+.myHead {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  max-width: 450px;
+}

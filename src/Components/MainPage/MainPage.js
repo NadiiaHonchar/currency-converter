@@ -5,8 +5,8 @@ export default function MainPage({data,
 }) {
   return (
     <div className={style.container}>
-    <h2>Курс національного банку України станом на {data}</h2>
-    {children}
+    <h2 className={style.myHead}>Курс національного банку України станом на {data}</h2>
+    <div className={style.cardForm}>{children}</div>
     </div>
   );
 }

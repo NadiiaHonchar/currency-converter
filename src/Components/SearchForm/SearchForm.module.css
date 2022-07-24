@@ -1,17 +1,31 @@
-
-@media (min-width: 480px) {
-    .formInput {
-      /* width: 480px; */
-    }
-  }
-  @media (min-width: 768px) {
-    .formInput {
-      /* width: 768px; */
-      display: flex;
-  }
+.countInput {
+  width: 100px;
+  margin-right: 10px;
+  border-color: rgb(89, 0, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 0 rgb(89, 0, 255, 0.5);
 }
-  @media (min-width: 1200px) {
-    .formInput {
-      /* width: 1200px; */
-    }
-  }
+
+.currencyInput {
+  margin-right: 10px;
+  border-color: rgb(89, 0, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 0 rgb(89, 0, 255, 0.5);
+}
+
+.countInput:hover,
+.countInput:focus,
+.countInput:active,
+.currencyInput:hover,
+.currencyInput:focus,
+.currencyInput:active {
+  outline: none;
+  border-color: rgb(89, 0, 255);
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 0 rgb(89, 0, 255);
+}
+
+.currencyName {
+  margin-top: 0;
+  margin-bottom: 0;
+}

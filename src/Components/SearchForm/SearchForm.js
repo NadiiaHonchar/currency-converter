@@ -11,14 +11,16 @@ export default function SearchForm({
   return (
     <>
       <div className={style.formInput}>
-        <p>{txt}</p>
+        <p className={style.currencyName}>{txt}</p>
         <input
           type="text"
           value={count}
+          className={style.countInput}
           onChange={(e) => onCountChange(e.target.value)}
         />
         <select
           value={currency}
+          className={style.currencyInput}
           onChange={(e) => onCurrencyChange(e.target.value)}
         >
           {currencies.map((item) => (
